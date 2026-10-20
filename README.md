@@ -1,91 +1,49 @@
-# Labor Force Survey (LFS) – Econometrics I  
-**Problem Set 1 | Questions 1–4**
+# Iran Labour Force Survey: Labour Market Indicators from Microdata
 
-This notebook contains the solutions to Questions 1–4 of Problem Set 1 for the *Econometrics I* course.  
-The analysis is based on microdata from the Iranian **Labor Force Survey (LFS)** and focuses on labor market indicators and working conditions.
+Cleaning and analysis of individual-level microdata from Iran's **Labour Force Survey (LFS)**, published by the Statistical Center of Iran. The notebook builds the standard labour-market indicators from the raw survey file and documents how they vary by gender, education, age, sector, firm size, occupation and social-insurance coverage.
 
----
+<p align="center">
+  <img src="figures/unemployment_by_age.png" width="49%" alt="Unemployment rate and employment-to-population ratio by age">
+  <img src="figures/employment_by_sector_firm_size.png" width="49%" alt="Employment by sector and firm size">
+</p>
 
-## File Description
+## What the notebook does
 
-- **LFS_Data_cleaning.ipynb**  
-  Python notebook implementing data cleaning, aggregation, visualization, and statistical analysis for LFS data.
+| Step | Content |
+|---|---|
+| **Data preparation** | Reads the raw `LFS_RawData` table from the Microsoft Access release, recodes activity status, education, ISIC industry and ISCO occupation codes, and builds analysis variables. |
+| **Participation and unemployment** | Labour-force participation and unemployment rates by gender and by six education groups, using standard ILO definitions. |
+| **Age profiles** | Unemployment rate and employment-to-population ratio by single year of age (15–65). |
+| **Structure of employment** | Employment across agriculture, industry and services by establishment size (1–4, 5–9, 10–19, 20–49, 50+ employees). |
+| **Working hours and informality** | Weekly hours by occupation and insurance status, with a one-way ANOVA testing differences in hours across groups. |
 
----
+## Skills demonstrated
 
-## Dataset
+- Working with large official survey microdata in its raw release format
+- Constructing labour-market indicators from first principles rather than published tables
+- Working with international classification systems (ISIC, ISCO)
+- Clear descriptive visualisation of labour-market structure
 
-- Source: Statistical Center of Iran – Labor Force Survey
-- Format: Microsoft Access database (`.mdb`)
-- Table used: `LFS_RawData`
+## Repository structure
 
-### Key Variables
-- Gender
-- Age
-- Education level
-- Activity status (employed, unemployed, inactive)
-- Industry code (ISIC)
-- Occupation code (ISCO)
-- Insurance status
-- Weekly working hours
+```
+LFS_Data_cleaning.ipynb   # full pipeline: cleaning → indicators → figures → ANOVA
+figures/                  # selected figures exported from the notebook
+```
 
----
+## Reproducing
 
-## Questions Overview
-
-### Question 1  
-**Labor Force Participation Rate (LFPR)** and **Unemployment Rate** by:
-- Gender
-- Education level  
-
-Education levels are grouped into:
-- Below high school
-- High school
-- Bachelor
-- Master
-- Above master
-- Unknown  
-
-Rates are computed using standard labor market definitions.
-
----
-
-### Question 2  
-- Unemployment rate by age  
-- Employment-to-population ratio by age  
-- Sample restricted to individuals aged **15–65**  
-- Results visualized using bar charts
-
----
-
-### Question 3  
-Employment distribution across three economic sectors:
-- Agriculture
-- Industry
-- Services  
-
-Sector classification is based on **ISIC codes**, and results are reported by **establishment size** using a stacked bar chart.
-
----
-
-### Question 4  
-- Average weekly working hours by:
-  - Occupation group (based on ISCO major groups)
-  - Insurance status (insured vs uninsured)
-- Comparison of working hours between insured and uninsured workers using **ANOVA**
-- Visualization using boxplots
-
----
-
-## How to Run
-
-1. Place the LFS Access database file in a local directory (e.g. `data/`).
-2. Update the database file path in the notebook.
-3. Run all cells sequentially.
-
----
-
-## Dependencies
+The LFS microdata are distributed by the [Statistical Center of Iran](https://www.amar.org.ir/) and are not included here.
 
 ```bash
 pip install pandas numpy matplotlib scipy pyodbc
+```
+
+Place the `.mdb` release in a local folder, set the path in the first cell, and run all cells. Reading Access files through `pyodbc` requires the Microsoft Access ODBC driver (Windows) or `mdbtools` (Linux/macOS).
+
+## Context
+
+Developed during the MSc in Economics at Sharif University of Technology (Econometrics I).
+
+---
+**Shayan Pourmasoomi** · MSc Economics, Sharif University of Technology · [LinkedIn](https://www.linkedin.com/in/shayan-pourmasoomi-8b6206389)
