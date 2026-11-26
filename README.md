@@ -43,7 +43,7 @@ Place the `.mdb` release in a local folder, set the path in the first cell, and 
 
 ## Context
 
-Developed during the MSc in Economics at Sharif University of Technology (Econometrics I).
+Developed during the MSc in Economics at Sharif University of Technology (Applied Econometrics).
 
 ---
 **Shayan Pourmasoomi** · MSc Economics, Sharif University of Technology · [LinkedIn](https://www.linkedin.com/in/shayan-pourmasoomi-8b6206389)
